@@ -3,7 +3,7 @@ import avatarPens from '../images/Avatar-pens.svg';
 import Card from './Card';
 import Api from '../utils/Api';
 
-function Main(props) {
+function Main({onEditAvatar, onEditProfile, onAddPlace, onCardClick}) {
   const [userName, setUserName] = React.useState(null);
   const [userDescription, setUserDescription] = React.useState(null);
   const [userAvatar, setUserAvatar] = React.useState(null);
@@ -51,7 +51,7 @@ function Main(props) {
         <div className="profile__container">
           <div className="profile__avatar-container">
             <img className="profile__avatar" src={userAvatar} alt="Аватар профиля" />
-            <button className="profile__avatar-edit" type="button" onClick={props.onEditAvatar}>
+            <button className="profile__avatar-edit" type="button" onClick={onEditAvatar}>
               <img className="profile__avatar-pen" src={avatarPens}
                 alt="ручка редактирования" />
             </button>
@@ -59,12 +59,12 @@ function Main(props) {
           <div className="profile__info">
             <h1 className="profile__title">{userName}</h1>
             <button className="profile__edit-button opacity-hover" type="button"
-              aria-label="Редактирование информации" onClick={props.onEditProfile}></button>
+              aria-label="Редактирование информации" onClick={onEditProfile}></button>
             <p className="profile__subtitle">{userDescription}</p>
           </div>
         </div>
         <button className="profile__add-button opacity-hover"
-          type="button" aria-label="Добавить карточку" onClick={props.onAddPlace}></button>
+          type="button" aria-label="Добавить карточку" onClick={onAddPlace}></button>
       </section>
       <section className="elements">
         {cards.map((cardItem) => (
@@ -73,7 +73,7 @@ function Main(props) {
             name={cardItem.name}
             link={cardItem.link}
             likes={cardItem.likes}
-            onCardClick={props.onCardClick}
+            onCardClick={onCardClick}
           />
         ))}
       </section>

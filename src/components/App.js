@@ -1,5 +1,4 @@
 import React from 'react';
-import "../index.css";
 
 import Header from './Header';
 import Main from './Main';
@@ -37,13 +36,6 @@ function App() {
     setSelectedCard(null)
   }
 
-  // Обработчик закрытия попапов по оверлею
-  function closePopupOverlay(evt) {
-    if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains('popup__close-icon')) {
-      closeAllPopups();
-    }
-  }
-
   //Обработчик события при клике на картинку
   function handleCardClick(card) {
     setSelectedCard(card)
@@ -67,7 +59,6 @@ function App() {
           button="Сохранить"
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
-          closeOverlay={closePopupOverlay}
         >
           <input className="popup__input popup__input_type_name" type="text" id="name" name="name" placeholder="Имя"
             minLength="2" maxLength="40" required />
@@ -83,7 +74,6 @@ function App() {
           button="Сохранить"
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          closeOverlay={closePopupOverlay}
         >
           <input className="popup__input popup__input_type_card-title" type="text" id="title" name="name"
             placeholder="Название места" minLength="2" maxLength="30" required />
@@ -98,7 +88,6 @@ function App() {
           title="Вы уверены?"
           button="Да"
           onClose={closeAllPopups}
-          closeOverlay={closePopupOverlay}
         >
         </PopupWithForm>
 
@@ -108,7 +97,6 @@ function App() {
           button="Сохранить"
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-          closeOverlay={closePopupOverlay}
         >
           <input className="popup__input popup__input_type_avatar" type="url" id="avatar" name="avatar"
             placeholder="Ссылка на изображение" required />
@@ -117,7 +105,6 @@ function App() {
 
         <ImagePopup
           onClose={closeAllPopups}
-          closeOverlay={closePopupOverlay}
           card={selectedCard}
         />
 

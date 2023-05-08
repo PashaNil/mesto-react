@@ -1,10 +1,18 @@
 import React from 'react';
 
 function PopupWithForm(props) {
+
+    // Обработчик закрытия попапов по оверлею
+    function closePopupOverlay(evt) {
+      if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains('popup__close-icon')) {
+        props.onClose();
+      }
+    }
+
   return (
     <div
       className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}`}
-      onClick={props.closeOverlay}>
+      onClick={closePopupOverlay}>
       <div className="popup__container">
         <button
           className="popup__close-icon opacity-hover"

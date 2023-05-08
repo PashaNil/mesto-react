@@ -4,7 +4,7 @@ function Card(props) {
 
   return (
     <article className="element">
-      <img className="element__mask-group" src={props.link} alt="" onClick={(evt)=> props.onCardClick(props)}/>
+      <img className="element__mask-group" src={props.link} alt={props.name} onClick={(evt)=> props.onCardClick(props)}/>
       <button className="element__trash-button" type="button"></button>
       <div className="element__rectangle">
         <h2 className="element__title">{props.name}</h2>
