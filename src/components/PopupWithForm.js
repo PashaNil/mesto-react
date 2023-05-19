@@ -4,7 +4,7 @@ function PopupWithForm(props) {
 
   // Обработчик закрытия попапов по оверлею
   function closePopupOverlay(evt) {
-    if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains('popup__close-icon')) {
+    if (evt.target.classList.contains("popup_opened")) {
       props.onClose();
     }
   }
