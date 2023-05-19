@@ -58,19 +58,28 @@ class Api {
     })
   }
 
-  // Обновление данных лайка на сервере
+/*   // Обновление данных лайка на сервере
   addLikeNumber(cardId) {
     const url = this._url + `/cards/${cardId}/likes`
     return this._request(url, {
       method: "PUT"
     })
-  }
+  } */
 
-  // Удаление лайка
+/*   // Удаление лайка
   deletLikeNumber(cardId) {
     const url = this._url + `/cards/${cardId}/likes`
     return this._request(url, {
       method: "DELETE"
+    })
+  } */
+
+  // Обновление данных лайка
+  changeLikeCardStatus(cardId, isLiked){
+    const likeMethod = isLiked ? "DELETE" : "PUT";
+    const url = this._url + `/cards/${cardId}/likes`
+    return this._request(url, {
+      method: likeMethod
     })
   }
 
@@ -81,6 +90,7 @@ class Api {
       method: "DELETE"
     })
   }
+
 }
 
 const apiConfig = {
