@@ -133,11 +133,14 @@ function App() {
       setCards([newCard, ...cards])
       closeAllPopups();
     })
+    .catch((err) => {
+      console.log(`Ошибка запроса: ${err}`)
+    });
   }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <body className="page">
+      <div className="page">
         <div className="page__container">
           <Header />
           <Main
@@ -183,7 +186,7 @@ function App() {
           />
 
         </div>
-      </body>
+      </div>
     </CurrentUserContext.Provider>
   )
 }

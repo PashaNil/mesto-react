@@ -10,11 +10,11 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  // При изменении данных контекста, будет обновлятся стейты имени и подписи
+  // При открытие попапа и обновлении контекста, будет обновлятся стейты имени и подписи
   React.useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   // Обработчик внешнего form, который вызывает обновление данных через api
   function handleSubmit(e) {
@@ -35,10 +35,10 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       onSubmit={handleSubmit}
     >
       <input className="popup__input popup__input_type_name" type="text" id="name" name="name" placeholder="Имя"
-        minLength="2" maxLength="40" required value={name} onChange={(e) => setName(e.target.value)} />
+        minLength="2" maxLength="40" value={name ? name : ""} required onChange={(e) => setName(e.target.value)} />
       <span className="popup__input-error name-error"></span>
       <input className="popup__input popup__input_type_job" type="text" id="job" name="about"
-        placeholder="Род занятий" minLength="2" maxLength="200" required value={description} onChange={(e) => setDescription(e.target.value)} />
+        placeholder="Род занятий" minLength="2" maxLength="200" required value={description ? description : ""} onChange={(e) => setDescription(e.target.value)} />
       <span className="popup__input-error job-error"></span>
     </PopupWithForm>
   )
